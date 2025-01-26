@@ -42,6 +42,21 @@ const players = {
   4: { color: "orange", remainingPawnsToMove: gameData.pawnsCount, remainingPawns: gameData.pawnsCount, countries: playersCountries[4], capitalsNum: 2 }
 };
 
+function unhighlightPointsForCapture()
+{
+  for (const pointId in pawnsInfoBeforeHighlight) {
+    pawnsOnPoints[pointId].owner = pawnsInfoBeforeHighlight[pointId].owner;
+   if(skippingEnded) {
+    Y=false;
+    console.log("A point has been unhighlighted " + pointId);
+    updatePointDisplay(pointId);
+
+    skippingEnded=false;
+   }
+  }
+  yellowPoints = [];
+}
+
 function highlightConnections(pointId) {
   const point = pointsData.find(p => p.id === pointId);
   if (!point) {
@@ -909,6 +924,7 @@ function updatePointDisplay(pointId) {
     } else {
       // Check if point belongs to international country
       if (point.country === internationalCountry) {
+        
         fillColor = "gray";
       } else {
         fillColor = pawnsOnPoints[pointId].owner === 1 ? players[1].color : 
