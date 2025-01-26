@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Избор на държави - 4 играча</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Left SVG for controls -->
+    <svg id="left-svg" viewBox="0 0 570 1030" preserveAspectRatio="xMinYMid meet">
+        <foreignObject width="570" height="1030">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="left-panel">
+                <div class="textFont30">
+                    <div id="country-selection" class="hidden">
+                        <h2>Избор на държави</h2>
+                        <div id="current-player">Ред на играч 1 да избере държава</div>
+                    </div>
+                </div>
+                <div id="countries-list" class="countries-grid">
+                    <button class="country-btn" data-country="Ottoman">Османска империя</button>
+                    <button class="country-btn" data-country="Britain">Великобритания</button>
+                    <button class="country-btn" data-country="Scandinavia">Скандинавия</button>
+                    <button class="country-btn" data-country="Russia">Русия</button>
+                    <button class="country-btn" data-country="Prussia">Прусия</button>
+                    <button class="country-btn" data-country="Italy">Италия</button>
+                    <button class="country-btn" data-country="Spain">Испания</button>
+                    <button class="country-btn" data-country="France">Франция</button>
+                    <button class="country-btn" data-country="Austria">Австрия</button>
+                </div>
+            </div>
+        </foreignObject>
+    </svg>
+
+    <!-- Right SVG for map -->
+    <svg id="right-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMaxYMid meet">
+        <image xlink:href="Europe.jpg" width="1200" height="800"></image>
+        <g id="connections"></g>
+        <g id="points"></g>
+    </svg>
+
+    <script src="data_europe.js"></script>
+    <script src="countries_europe_4.js"></script>
+</body>
+</html>

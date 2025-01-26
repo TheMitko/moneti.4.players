@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Европа</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Right side SVG image -->
+    <svg id="right-side-image" class="side-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 600">
+        <!-- Example SVG content, you can customize it as needed -->
+        <rect x="0" y="0" width="160" height="600" fill="green" />
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="24">Рекламка</text>
+    </svg>
+
+    <div class="location">
+        <div id="pawns-count" class="pawns-count">
+            <p id="player1-name" class="player1-names"></p> <!-- Here should be the player 1 name -->
+            <p id="player1-capitals-info" class="player1-names">столици: <span id="player1-capitals" class="player1-capitals">4</span></p> <!-- Here should be the player 1 capitals -->
+            <p id="player1-info" class="player1-names">пулове: <span id="player1-pawns" class="player1-pawns">0</span></p> <!-- Here should be the player 1 pawns -->
+        </div>
+        <div id="capitals-count" class="capitals-count">
+            <p id="player2-name" class="player2-names"></p> <!-- Here should be the player 2 name -->
+            <p id="player2-capitals-info" class="player2-names">столици: <span id="player2-capitals" class="player2-capitals">4</span></p> <!-- Here should be the player 2 capitals -->
+            <p id="player2-info" class="player2-names">пулове: <span id="player2-pawns" class="player2-pawns">0</span></p> <!-- Here should be the player 2 pawns -->
+        </div>
+    
+
+    <div id="info-panel">
+        <div id="player1-capital-info"></div>
+        <div id="player2-capital-info"></div>
+      </div>
+    </div>
+      
+    <button id="endPlacingButton" style="position: absolute; top: 75%; left: 0.5%; padding: 15px 30px; font-size: 24px; background: linear-gradient(to bottom, #00FF40, #05718c); border: 2px solid #ccc; border-radius: 10px; color: #333; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">Край на поставяне</button>
+
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <image xlink:href="Europe.jpg" width="1200" height="800"></image>
+        <g id="connections"></g> 
+        <g id="points"></g>
+        <g id="pawns"></g>
+    </svg>
+
+    <script src="data_europe.js"></script>
+    <script src="script_europe_2.js"></script>
+</body>
+
+</html>

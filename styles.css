@@ -1,0 +1,383 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #25415b;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+.NameOfGame
+{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: 
+        translate(-50%, -50%);
+    font-size: 70px;
+}
+.StartGame
+{
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: 
+        translate(-50%, -50%);
+    font-size: 60px;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 45px;
+}
+.SetParameters
+{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: 
+        translate(-50%, -50%);
+    font-size: 70px;
+}
+.NumberOfPlayers
+{
+    position: absolute;
+    top: 41%;
+    font-size: 40px;
+}
+.NumberOfPlayers select
+{
+    position: relative;
+}
+.SelectMap
+{
+    position: absolute;
+    font-size: 40px;
+    top: 51%;
+}
+.SelectMap select
+{
+    position: relative;
+}
+.SelectPawns
+{
+    position: absolute;
+    font-size: 40px;
+    top: 61%;
+}
+.SelectPawns input
+{
+    position: relative;
+    size: 10%;
+}
+.SkipPawns {
+    position: relative;
+    font-size: 40px;
+    top: 23%;
+    display: flex;
+    align-items: center;
+}
+
+.SkipPawns input {
+    position: relative;
+    margin-left: 16px;
+    transform: scale(3);
+}
+.Submit
+{
+    position: absolute;
+    font-size: 40px;
+    margin: auto;
+    top: 80%;
+    left: 44%;
+}
+#map-container {
+    position: relative;
+    width: 1200px;  /* Fixed width */
+    height: 800px;  /* Fixed height */
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+/* Background map image */
+#map-image {
+    width: 100%; /* Matches the container’s width */
+    height: auto; /* Ensures aspect ratio consistency */
+    display: block;
+}
+
+/* SVG overlay on top of the map image */
+#map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks only on visible elements */
+}
+#map-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+.side-image {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 600px;
+}
+
+#left-side-image {
+    left: 0;
+}
+
+#right-side-image {
+    right: 0;
+}
+.countries-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 20px 3px;
+    padding: 3px;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.country-btn {
+    font-size: 34px;
+    width: auto;
+    padding: 8px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 2px;
+    border-radius: 4px;
+    font-weight: bold;
+    flex: 0 0 auto;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.country-btn:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.country-btn.selected {
+    background-color: #e0e0e0;
+    border-color: #999;
+}
+.textFont30
+{
+    font-size: 30px;
+    text-align: center;
+}
+
+.textFont30 h2 {
+    margin: 10px 0;
+    font-size: 50px;
+}
+
+#current-player {
+    font-size: 30px;
+    margin-bottom: 27px;
+}
+
+.pawns-count, .capitals-count {
+    position: relative;
+    font-size: 10px;
+    background: linear-gradient(to bottom, #00FF40, #05718c);
+    border: 2px solid #ccc; /* Лека рамка за акцент */
+    border-radius: 10px; /* Овални ъгли за модерен вид */
+    padding: 10px 20px; /* Вътрешни отстояния за простор */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Мек сянка за дълбочина */
+    color: #333; /* Тъмен текст за четимост */
+    margin-top: 20px;
+}
+
+.pawns-count p, .capitals-count p {
+    margin: 10px 0; /* Пространство между параграфите */
+    font-weight: bold; /* Изтънен текст */
+    font-size: 21.5px; /* По-голям шрифт за по-ясен изглед */
+}
+
+.player1-pawns
+{
+    color: #3457D5;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}
+.player2-pawns
+{
+    color: #0e7545;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}
+.location
+{
+    position: absolute;
+    top: 10%;
+    left: 2%;
+}
+#player-names-container {
+    position: absolute;
+    top: 31%;
+    right: 13%;
+    width: 200px; /* Ширина на контейнера за имената */
+    background-color: #f4f4f9;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#player-names-container label {
+    color: black;
+    display: block; /* Подреждане на елементите една под друга */
+    margin-bottom: 10px; /* Пространство между елементите */
+}
+
+#player-names-container input {
+    width: 100%; /* Прави инпутите да заемат цялата ширина на контейнера */
+}
+.player2-names
+{
+    color: #0e7545;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}
+.player1-names
+{
+    color: #3457D5;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}
+
+.player3-names {
+    color: #cc0000;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}
+
+.player4-names {
+    color: #ff9800;  /* Orange color for player 4 */
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}
+
+.player4-pawns {
+    color: #ff9800;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}
+
+.countries-page-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.left-panel {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background-color: rgba(37, 65, 91, 0.9);
+    left: 0px;
+    position: absolute;
+}
+
+.right-panel {
+    width: 80%;
+    height: 100vh;
+    position: relative;
+}
+
+.right-panel svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#left-svg {
+    position: fixed;
+    left: calc((100% - 470px - (100% - 470px)) / 2);  /* Centers the panel in the available space */
+    top: 0;
+    width: 470px;
+    height: calc(100vh + 230px);
+    background-color: rgba(37, 65, 91, 0.9);
+    z-index: 1000;
+}
+
+#right-svg {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: calc(100% - 470px);
+    height: 100vh;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зададете параметри</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1 class="SetParameters">
+        Зададете Параметри
+    </h1>
+
+    <label class="NumberOfPlayers" for="PlayersCnt">
+        Изберете брой играчи 
+        <select class="NumberOfPlayers" id="PlayersCnt">
+            <option class="NumberOfPlayers" value="1">1 играч</option>
+            <option class="NumberOfPlayers" value="2">2 играчи</option>
+            <option class="NumberOfPlayers" value="3">3 играчи</option>
+            <option class="NumberOfPlayers" value="4">4 играчи</option>
+        </select>
+    </label>
+
+    <div id="player-names-container" style="display: none;">
+        <!-- Тук ще се добавят секциите за имена на играчите -->
+    </div>
+
+    <label class="SelectMap" for="Map">Изберете карта<select class="SelectMap" id="Map">
+            <option class="SelectMap" value="1">Европа</option>
+            <option class="SelectMap" value="2">САЩ</option>
+        </select>
+    </label>
+
+    <label for="pawns-count" class="SelectPawns">Изберете брой пулове на играч 
+        <input class="SelectPawns" type="number" id="pawns-count" min="2" value="3">
+    </label>
+
+    <label class="SkipPawns" for="skip-pawns-checkbox">
+        Възможност за прескачане на няколко пула наведнъж <input type="checkbox" id="skip-pawns-checkbox" class="SkipPawns">
+        
+    </label>
+    
+    <a id="dynamicLink">
+        <button id="saveButton" class="Submit">Зададете</button>
+    </a>
+    <script src="script.js"></script>
+</body>
+
+</html>

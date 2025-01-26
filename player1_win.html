@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1976d2, #0d47a1);
+            background-image: url(https://img.freepik.com/free-photo/war-conflict-landscape-with-soldiers-fighting_23-2149766327.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .win-container {
+            background: rgb(0, 130, 173, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-out;
+        }
+        .win-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #90caf9;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .win-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .play-again {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .play-again:hover {
+            background: #1e88e5;
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            const gameData = JSON.parse(localStorage.getItem("gameData")) || { playerNames: ["Player 1", "Player 2"] };
+            const playerName = gameData.playerNames[0] || "Player 1";
+            document.querySelector('.win-title').textContent = `${playerName}  печели! 🏆`;
+        }
+    </script>
+</head>
+<body>
+    <div class="win-container">
+        <h1 class="win-title">Player 1 Wins! 🏆</h1>
+        <p class="win-message">Поздравления за вашата победа!</p>
+        <button class="play-again" onclick="window.location.href='index.html'">
+            Още една игра?
+        </button>
+    </div>
+</body>
+</html>
