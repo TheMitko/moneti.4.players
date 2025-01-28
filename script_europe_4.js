@@ -54,7 +54,7 @@ function unhighlightPointsForCapture()
     skippingEnded=false;
    }
   }
-  yellowPoints = [];
+
 }
 
 function highlightConnections(pointId) {
@@ -102,6 +102,7 @@ function makeConnectionsBidirectional(points) {
         point.OriginalOwner = 4; // Player 4 is the original owner
       } else {
         point.OriginalOwner = 0; // No original owner
+        console.log(`Няма оригинален собственик за точка ${point.id} и държава ${point.country}`);
       }
     }
   });
@@ -202,7 +203,8 @@ const pointNames = {}; // Създаване на обект за имена н�
 // Helper function to check country ownership
 function checkCountryOwnership(point) {
   const country = point.country;
-  if (country) {
+  if (point.OriginalOwner === 0 ) {return 0;}
+  else if (country) {
     if (players[1].countries.includes(country)) {
       return 1; // Player 1 owns this country
     } else if (players[2].countries.includes(country)) {
@@ -210,10 +212,8 @@ function checkCountryOwnership(point) {
     } else if (players[3].countries.includes(country)) {
       return 3; // Player 3 owns this country
     } else if (players[4].countries.includes(country)) {
+      console.log("Player 4 owns this point's country, which is " + country + "and it must not be international, meaning it is not " + internationalCountry + ". The point is " + point.id);  
       return 4; // Player 4 owns this country
-    } else if(country === internationalCountry) {
-      console.log("International country");
-      return 0; // International country
     }
   }
   return 0; // No player owns this point's country
@@ -369,17 +369,17 @@ function selectPoint(pointId) {
 
     oldPawnIds = [];
 
-    dinamicCaptureOptions.forEach(option => {
+    yellowPoints.forEach(option => {
       const circle = document.getElementById(option);
       const point = pointsData.find(p => p.id === option);
       if (circle && point) {
-        if (pawnsOnPoints[option].pawns !== 0) {
-          circle.setAttribute("r", point.capital ? 22 : 10);
-        } else {
-          circle.setAttribute("r", point.capital ? 22 : 7);
-        }
-        circle.setAttribute("fill", point.country ? (checkCountryOwnership(point) === 1 ? players[1].color : (checkCountryOwnership(point) === 2 ? players[2].color : (checkCountryOwnership(point) === 3 ? players[3].color : players[4].color))) : "gray");
-        console.log(checkCountryOwnership(point));
+      if (pawnsOnPoints[option].pawns !== 0) {
+        circle.setAttribute("r", point.capital ? 22 : 10);
+      } else {
+        circle.setAttribute("r", point.capital ? 22 : 7);
+      }
+      circle.setAttribute("fill", point.country ? (checkCountryOwnership(point) === 1 ? players[1].color : (checkCountryOwnership(point) === 2 ? players[2].color : (checkCountryOwnership(point) === 3 ? players[3].color : players[4].color))) : "gray");
+      console.log("This previous point has been unhighlighted in the color" + point.country ? (checkCountryOwnership(point) === 1 ? players[1].color : (checkCountryOwnership(point) === 2 ? players[2].color : (checkCountryOwnership(point) === 3 ? players[3].color : players[4].color))) : "gray" );
       }
     });
 
@@ -433,6 +433,25 @@ function selectPoint(pointId) {
     console.log("X=" + X + " and Y=" + Y);
 
     if (X && Y) {
+      yellowPoints.forEach(option => {
+        const circle = document.getElementById(option);
+        const point = pointsData.find(p => p.id === option);
+        if (circle && point) {
+        if (pawnsOnPoints[option].pawns !== 0) {
+          circle.setAttribute("r", point.capital ? 22 : 10);
+        } else {
+          circle.setAttribute("r", point.capital ? 22 : 7);
+        }
+        const color = point.country === 
+        checkCountryOwnership(point) === 1 ? players[1].color :
+        checkCountryOwnership(point) === 2 ? players[2].color :
+        checkCountryOwnership(point) === 3 ? players[3].color :
+        checkCountryOwnership(point) === 4 ? players[4].color :
+        "gray";
+        circle.setAttribute("fill", color);
+        console.log("This previous point has been unhighlighted in the color" + point.country ? (checkCountryOwnership(point) === 1 ? players[1].color : (checkCountryOwnership(point) === 2 ? players[2].color : (checkCountryOwnership(point) === 3 ? players[3].color : players[4].color))) : "gray" );
+        }
+      });
       if (isACapitalBeingAttacked && checkCapitalsOwnership(currentPlayer).underAttack) {
         alert("Поздравления! Успешно изгубихте столица и войска!");
         let ConqueredCapital = checkCapitalsOwnership(defender).capital;
@@ -922,16 +941,10 @@ function updatePointDisplay(pointId) {
       fontSize = "18"; // Increased font size from 14 to 18
       fontWeight = "bold"; // Added bold font weight
     } else {
-      // Check if point belongs to international country
-      if (point.country === internationalCountry) {
-        
-        fillColor = "gray";
-      } else {
-        fillColor = pawnsOnPoints[pointId].owner === 1 ? players[1].color : 
-                   pawnsOnPoints[pointId].owner === 2 ? players[2].color : 
-                   pawnsOnPoints[pointId].owner === 3 ? players[3].color : 
-                   players[4].color;
-      }
+      fillColor = pawnsOnPoints[pointId].owner === 1 ? players[1].color : 
+                  pawnsOnPoints[pointId].owner === 2 ? players[2].color : 
+                  pawnsOnPoints[pointId].owner === 3 ? players[3].color : 
+                  players[4].color;
       textColor = "white"; // Use white text color for player colors
       fontSize = "14"; // Default font size
       fontWeight = "normal"; // Default font weight
@@ -968,12 +981,15 @@ function updatePointDisplay(pointId) {
     if (circle) {
       circle.setAttribute("r", point.capital ? 22 : 7); // Начален радиус
       // Update the color assignment for empty points too
-      const color = point.country === internationalCountry ? "gray" : 
+      // Check if point belongs to international country
+      let color = point.country ===
                    checkCountryOwnership(point) === 1 ? players[1].color :
                    checkCountryOwnership(point) === 2 ? players[2].color :
                    checkCountryOwnership(point) === 3 ? players[3].color :
                    checkCountryOwnership(point) === 4 ? players[4].color :
                    "gray";
+                  
+      
       circle.setAttribute("fill", color);
     }
     console.log(`Точката ${pointId} е скрита, защото няма пулове.`);
