@@ -930,7 +930,7 @@ function movePawns(startPointId, destinationPointId) {
       });
 
       if (dinamicCaptureOptions.length > 0) {
-
+        oldPawnIds.push(startPointId);
         highlightConnections(destinationPointId); // Highlight connections for SkipPawns logic
         beingAttacked[pawnsOnPoints[destinationPointId].owner] = true;
         TheAttacker[pawnsOnPoints[destinationPointId].owner] = currentPlayer; 
