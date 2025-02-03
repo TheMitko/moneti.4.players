@@ -798,7 +798,8 @@ function selectPoint(pointId) {
           selectedStartPoint = null;
           return;
         }
-        if (pawnsOnPoints[destinationPoint].pawns !== 0 && beingAttacked[pawnsOnPoints[destinationPoint].owner] === true) {
+        const point = pointsData.find(p => p.id === destinationPoint);
+        if (((pawnsOnPoints[destinationPoint].pawns !== 0) || (point.capital === true))&& beingAttacked[pawnsOnPoints[destinationPoint].owner] === true ) {
           if (!confirmAttackOnAlreadyAttackedPlayer()) {
             selectedStartPoint = null;
             destinationPoint = null;
@@ -1398,6 +1399,7 @@ function switchTurn() {
     if (currentPlayer === 1) { atacker = pawnsOnPoints[theCapital.id].owner; defender = 1; }
     if (currentPlayer === 2) { atacker = pawnsOnPoints[theCapital.id].owner; defender = 2; }
     if (currentPlayer === 3) { atacker = pawnsOnPoints[theCapital.id].owner; defender = 3; }
+    beingAttacked[defender]=true; TheAttacker[defender]=atacker;
   }
 
   X = false;
